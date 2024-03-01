@@ -7,8 +7,8 @@ from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak
 )
 
-from ..book import Book, ContentType
-from ..utils import LOG
+from book import Book, ContentType
+from utils import LOG
 
 
 class Writer:

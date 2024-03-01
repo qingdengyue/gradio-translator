@@ -1,4 +1,4 @@
-from ..book import ContentType
+from book import ContentType
 
 
 class Model:

@@ -5,7 +5,7 @@ import os
 import openai
 
 from .model import Model
-from ..utils import LOG
+from utils import LOG
 from openai import OpenAI
 
 

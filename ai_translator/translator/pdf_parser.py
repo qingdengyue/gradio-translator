@@ -1,8 +1,8 @@
 import pdfplumber
 from typing import Optional
-from ..book import Book, Page, Content, ContentType, TableContent
+from book import Book, Page, Content, ContentType, TableContent
 from .exceptions import PageOutOfRangeException
-from ..utils import LOG
+from utils import LOG
 
 
 class PDFParser:

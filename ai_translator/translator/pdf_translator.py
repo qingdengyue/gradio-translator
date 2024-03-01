@@ -1,8 +1,8 @@
 from typing import Optional
-from ..model import Model
+from model import Model
 from .pdf_parser import PDFParser
 from .writer import Writer
-from ..utils import LOG
+from utils import LOG
 
 
 class PDFTranslator:
