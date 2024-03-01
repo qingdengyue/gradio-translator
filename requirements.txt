@@ -11,3 +11,4 @@ Django
 django-bootstrap-v5
 gradio
 flask
+langchain

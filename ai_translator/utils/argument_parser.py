@@ -6,7 +6,7 @@ class ArgumentParser:
     def __init__(self):
         self.parser = argparse.ArgumentParser(
             description='Translate English PDF book to Chinese.')
-        self.parser.add_argument('--config', type=str, default='config.yaml',
+        self.parser.add_argument('--config_file', type=str, default='config.yaml',
                                  help='Configuration file with mode and API settings.')
         self.parser.add_argument('--model_type', type=str, required=True, choices=[
                                  'GLMModel', 'OpenAIModel'], help='The type of translation model to use.Choose between "GLMModel" and "OpenAIModel".')
@@ -28,6 +28,7 @@ class ArgumentParser:
         if args.model_type == 'OpenAIModel' and not args.openai_model:
            LOG.warning(f"openai_model not configured.will using default openai_model gpt-3.5-turbo")
            args.openai_model = "gpt-3.5-turbo"
+           args.model_name = "gpt-3.5-turbo"
 
         if args.model_type == 'OpenAIModel' and not args.openai_api_key:
             LOG.warning(f"openai_api_key not configured from config.yaml.will using default env() value")

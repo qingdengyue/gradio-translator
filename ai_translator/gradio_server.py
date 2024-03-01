@@ -16,6 +16,7 @@ def translation(input_file,source_language,target_language):
         source_language=source_language,
         target_language=target_language
     )
+    LOG.info(f"获取到翻译后文件地址:{output_file_path}")
 
     return output_file_path
 
