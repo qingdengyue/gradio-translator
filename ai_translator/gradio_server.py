@@ -8,17 +8,31 @@ from utils import ArgumentParser,LOG
 
 from translator import PDFTranslator,TranslationConfig
 
-def translation(input_file,source_language,target_language):
-    LOG.debug(f"[翻译任务]\n源文件:{input_file.name}\n源语言:{source_language}\n目标语言:{target_language}")
+SOURCE_LANGUAGE=(
+    ('简体中文','Chinese(Simplified)'),
+    ('繁体中文','Chinese(Traditional)'),
+    ('English','English'),
+)
+
+
+SOURCE_FORMAT=(
+    ('PDF','pdf'),
+    ('Markdown','markdown'),
+)
+
+def translation(input_file,source_language,target_language,file_format):
+    LOG.debug(f"[翻译任务]\n源文件:{input_file.name}\n源语言:{source_language}\n目标语言:{target_language}\n目标格式:{file_format}")
 
     output_file_path=Translator.translate_pdf(
         input_file.name,
+        output_file_format=file_format,
         source_language=source_language,
         target_language=target_language
     )
     LOG.info(f"获取到翻译后文件地址:{output_file_path}")
 
     return output_file_path
+
 
 
 def launch_gradio():
@@ -28,8 +42,9 @@ def launch_gradio():
         title="OpenAITranslator",
         inputs=[
                    gr.File(label="上传PDF文件"),
-                   gr.Textbox(label="源语言（默认:英文）",placeholder="English",value="English"),
-                   gr.Textbox(label="目标语言（默认:中文）",placeholder="Chinese",value="Chinese"),
+                   gr.Dropdown(label="源语言（默认:简体中文）",value="Chinese (Simplified)",choices=SOURCE_LANGUAGE),
+                   gr.Dropdown(label="目标语言（默认:英文）",value="English",choices=SOURCE_LANGUAGE),
+                   gr.Dropdown(label="目标文件格式（默认:PDF）",value="pdf",choices=SOURCE_FORMAT),
         ],
         outputs=[
             gr.File(label="下载翻译文件")
