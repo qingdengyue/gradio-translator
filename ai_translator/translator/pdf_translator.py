@@ -4,10 +4,11 @@ from .pdf_parser import PDFParser
 from .writer import Writer
 from utils import LOG
 from translator.translation_chain import TranslationChain
+from .translation_chain import ModelType
 
 class PDFTranslator:
-    def __init__(self, model_name:str) -> None:
-        self.translate_chain = TranslationChain(model_name)
+    def __init__(self, model_name:str,model_type:ModelType=ModelType.OPENAI,endpoint_url:str=None) -> None:
+        self.translate_chain = TranslationChain(model_name=model_name,model_type=model_type,endpoint_url=endpoint_url)
         self.pdf_parser = PDFParser()
         self.writer = Writer()
 

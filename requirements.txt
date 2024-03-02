@@ -7,8 +7,7 @@ reportlab
 pandas
 loguru
 openai
-Django
-django-bootstrap-v5
 gradio
 flask
 langchain
+langchain-community
