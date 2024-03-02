@@ -42,7 +42,7 @@ def launch_gradio():
         title="OpenAITranslator",
         inputs=[
                    gr.File(label="上传PDF文件"),
-                   gr.Dropdown(label="源语言（默认:简体中文）",value="Chinese (Simplified)",choices=SOURCE_LANGUAGE),
+                   gr.Dropdown(label="源语言（默认:简体中文）",value="Chinese(Simplified)",choices=SOURCE_LANGUAGE),
                    gr.Dropdown(label="目标语言（默认:英文）",value="English",choices=SOURCE_LANGUAGE),
                    gr.Dropdown(label="目标文件格式（默认:PDF）",value="pdf",choices=SOURCE_FORMAT),
         ],

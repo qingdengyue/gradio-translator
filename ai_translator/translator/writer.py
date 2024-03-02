@@ -36,11 +36,11 @@ class Writer:
         LOG.info(f"pdf_file_path:{book.pdf_file_path}")
         LOG.info(f"开始翻译:{output_file_path}")
 
-        font_path = "../fonts/alijiankangti45r.ttf"
-        pdfmetrics.registerFont(TTFont("alijiankangti45r", font_path))
+        font_path = "../fonts/simsun.ttc"
+        pdfmetrics.registerFont(TTFont("simsun", font_path))
 
         simsum_style = ParagraphStyle(
-            'alijiankangti45r', fontName='alijiankangti45r', fontSize=32, leading=14)
+            'simsun', fontName='simsun', fontSize=16, leading=14)
         doc = SimpleDocTemplate(output_file_path, pagesize=pagesizes.letter)
         styles = getSampleStyleSheet()
         story = []
@@ -59,12 +59,12 @@ class Writer:
                             ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
                             ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
                             # 更改表头字体为 "SimSun"
-                            ('FONTNAME', (0, 0), (-1, 0), 'alijiankangti45r'),
+                            ('FONTNAME', (0, 0), (-1, 0), 'simsun'),
                             ('FONTSIZE', (0, 0), (-1, 0), 14),
                             ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
                             ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
                             # 更改表格中的字体为 "SimSun"
-                            ('FONTNAME', (0, 1), (-1, -1), 'alijiankangti45r'),
+                            ('FONTNAME', (0, 1), (-1, -1), 'simsun'),
                             ('GRID', (0, 0), (-1, -1), 1, colors.black)
                         ])
 
