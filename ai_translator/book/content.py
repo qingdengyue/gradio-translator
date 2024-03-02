@@ -33,6 +33,9 @@ class Content:
             return True
         return False
 
+    def __str__(self) -> str:
+        return self.original
+
 
 class TableContent(Content):
     def __init__(self, data, translation=None):
@@ -50,12 +53,11 @@ class TableContent(Content):
                     f"Invalid translation type.Expected str.but got {type(translation)}")
             LOG.debug(translation)
 
-            table_data = [row.strip().split()
-                          for row in translation.strip().split('\n')]
-
-            LOG.debug(table_data)
-
-            translated_df = pd.DataFrame(table_data[1:], columns=table_data[0])
+            LOG.debug(f"[translation]\n{translation}")
+            header=translation.split(']')[0][1:].split(',')
+            data_rows=translation.split('] ')[1:]
+            data_rows=[row[1:-1].split(",") for row in data_rows]
+            translated_df = pd.DataFrame(data_rows,columns=header)
             LOG.debug(translated_df)
             self.translation = translated_df
             self.status = status
